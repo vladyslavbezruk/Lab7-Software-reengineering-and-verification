@@ -71,21 +71,22 @@ public class ShoppingCart{
         List<String[]> lines = new ArrayList<String[]>();
         String[] header = {"#","Item","Price","Quan.","Discount","Total"};
         int[] align = new int[] { 1, -1, 1, 1, 1, 1 };
-        // formatting each line 
+        // formatting each line
         double total = 0.00;
-        int  index = 0;
+        int index = 0;
+
         for (Item item : items) {
-            int discount = calculateDiscount(item.type, item.quantity);
-            double itemTotal = item.price * item.quantity * (100.00 - discount) / 100.00;
+            item.setDiscount(calculateDiscount(item.getItemType(), item.getQuantity()));
+            item.setTotalPrice(item.getPrice() * item.getQuantity() * (100.00 - item.getDiscount()) / 100.00);
             lines.add(new String[]{
                     String.valueOf(++index),
-                    item.title,
-                    MONEY.format(item.price),
-                    String.valueOf(item.quantity),
-                    (discount == 0) ? "-" : (String.valueOf(discount) + "%"),
-                    MONEY.format(itemTotal)
+                    item.getTitle(),
+                    MONEY.format(item.getPrice()),
+                    String.valueOf(item.getQuantity()),
+                    (item.getDiscount() == 0) ? "-" : (String.valueOf(item.getDiscount()) + "%"),
+                    MONEY.format(item.getTotalPrice())
             });
-            total += itemTotal;
+            total += item.getTotalPrice();
         }
         String[] footer = { String.valueOf(index),"","","","",
                 MONEY.format(total) };

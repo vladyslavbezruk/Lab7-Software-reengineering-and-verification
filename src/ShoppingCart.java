@@ -193,9 +193,57 @@ public class ShoppingCart{
 
     /** item info */
     private static class Item {
-        String title;
-        double price;
-        int quantity;
-        ItemType type;
+
+        private String title;
+        private double price;
+        private int quantity;
+        private ItemType type;
+        private int discount;
+        private double total;
+
+        public String getTitle(){
+            return title;
+        }
+
+        public void setTitle(String title){
+            this.title = title;
+        }
+
+        public double getPrice(){
+            this.price = price;
+        }
+
+        public int getQuantity(){
+            this.quantity = quantity;
+        }
+
+        public void setQuantity(int quantity){
+            this.quantity = quantity;
+        }
+
+        public ItemType getItemType(){
+            return type;
+        }
+
+        public void setItemType(ItemType type){
+            this.type = type;
+        }
+
+
+        public void setDiscount(int discount){
+            this.discount = discount;
+        }
+
+        public int getDiscount(){
+            return discount;
+        }
+
+        public double getTotalPrice(){
+            return total;
+        }
+
+        public void setTotalPrice(double total){
+            this.total = total;
+        }
     }
 }

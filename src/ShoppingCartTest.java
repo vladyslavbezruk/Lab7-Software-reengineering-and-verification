@@ -13,19 +13,19 @@ public class ShoppingCartTest {
     public void testAppendFormatted() {
         StringBuilder sb = new StringBuilder();
         ShoppingCart.appendFormatted(sb, "SomeLine", 0, 14);
-        assertEquals(sb.toString(), " SomeLine ");
+        assertEquals(sb.toString(), "   SomeLine    ");
         sb = new StringBuilder();
         ShoppingCart.appendFormatted(sb, "SomeLine", 0, 15);
-        assertEquals(sb.toString(), " SomeLine ");
+        assertEquals(sb.toString(), "   SomeLine     ");
         sb = new StringBuilder();
         ShoppingCart.appendFormatted(sb, "SomeLine", 0, 5);
         assertEquals(sb.toString(), "SomeL ");
         sb = new StringBuilder();
         ShoppingCart.appendFormatted(sb, "SomeLine", 1, 15);
-        assertEquals(sb.toString(), " SomeLine ");
+        assertEquals(sb.toString(), "       SomeLine ");
         sb = new StringBuilder();
         ShoppingCart.appendFormatted(sb, "SomeLine", -1, 15);
-        assertEquals(sb.toString(), "SomeLine ");
+        assertEquals(sb.toString(), "SomeLine        ");
     }
 
     /**

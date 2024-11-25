@@ -99,33 +99,14 @@ public class ShoppingCart{
         StringBuilder sb = new StringBuilder();
 
         // header
-        for (int i = 0; i < header.length; i++)
-            appendFormatted(sb, header[i], align[i], width[i]);
-        sb.append("\n");
-
-        // separator
-        for (int i = 0; i < lineLength; i++)
-            sb.append("-");
-        sb.append("\n");
-
-        // lines
+        appendFormattedLine(sb, header, align, width, true);
+        appendSeparator(sb, lineLength); // lines
         for (String[] line : lines) {
-            for (int i = 0; i < line.length; i++)
-                appendFormatted(sb, line[i], align[i], width[i]);
-            sb.append("\n");
+            appendSeparator(sb, lineLength);
         }
-
-        if (lines.size() > 0) {
-            // separator
-            for (int i = 0; i < lineLength; i++)
-                sb.append("-");
-            sb.append("\n");
-        }
-
 
         // footer
-        for (int i = 0; i < footer.length; i++)
-            appendFormatted(sb, footer[i], align[i], width[i]);
+        appendFormattedLine(sb, footer, align, width, false);
         return sb.toString();
     }
 

@@ -70,7 +70,7 @@ public class ShoppingCart{
         if (items.size() == 0)
             return "No items.";
 
-        List<String[]> lines = new ArrayList<String[]>();
+        List<String[]> lines = convertItemsToTableLines();
         String[] header = {"#","Item","Price","Quan.","Discount","Total"};
         int[] align = new int[] { 1, -1, 1, 1, 1, 1 };
         // formatting each line
@@ -90,11 +90,9 @@ public class ShoppingCart{
             total += item.getTotalPrice();
         }
 
-        String[] footer = {
-                String.valueOf(index),
+        String[] footer = { String.valueOf(index),
                 "","","","",
-                MONEY.format(total)
-        };
+                MONEY.format(total) };
 
         // column max length
         int[] width = new int[]{0,0,0,0,0,0};

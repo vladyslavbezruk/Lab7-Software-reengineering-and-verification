@@ -192,6 +192,27 @@ public class ShoppingCart{
         return discount;
     }
 
+    private void appendSeparator(StringBuilder sb, int lineLength){
+        for(int i = 0; i < lineLength; i++)
+            sb.append("\n");
+    }
+
+    private void adjustColumnWidth(int[] width, String[] columns){
+        for(int i = 0; i < width.length; i++)
+            width[i] = (int) Math.max(width[i], columns[i].length());
+    }
+
+    private void appendFormattedLine(StringBuilder sb,
+                                     String[] line,
+                                     int[] align,
+                                     int[] width,
+                                     Boolean newLine){
+        for(int i = 0; i < line.length; i++)
+            appendFormatted(sb, line[i], align[i], width[i]);
+        if(newLine)
+            sb.append('\n');
+    }
+
     /** item info */
     private static class Item {
         String title;

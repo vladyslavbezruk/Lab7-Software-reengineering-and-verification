@@ -206,6 +206,23 @@ public class ShoppingCart{
             sb.append('\n');
     }
 
+    private List<String[]> convertItemsToTableLines(){
+
+        List<String[]> lines = new ArrayList<String[]>();
+        int index = 0;
+        for (Item item : items) {
+            lines.add(new String[]{
+                    String.valueOf(++index),
+                    item.getTitle(),
+                    MONEY.format(item.getPrice()),
+                    String.valueOf(item.getQuantity()),
+                    (item.getDiscount() == 0) ? "-" : (String.valueOf(item.getDiscount()) + "%"),
+                    MONEY.format(item.getTotalPrice())
+            });
+        }
+        return lines;
+    }
+
     /** item info */
     private static class Item {
 
